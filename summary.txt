@@ -1,0 +1,39 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+
+For this coding exercise, I chose Python as the programming language because of its versatility, ease of use, and readability. 
+Python’s syntax allows me to focus on solving the problem rather than dealing with complex language constructs, making it ideal for both quick prototyping and scalable solutions.
+Additionally, I selected Flask as the web framework because it is lightweight, simple, and well-suited for quickly spinning up a web server to handle RESTful APIs. 
+Flask is easy to set up and requires minimal boilerplate code, which allows for rapid development of the required endpoints while still offering the flexibility to scale if needed.
+
+For data structures, I used Python’s heapq module because it provides an efficient way to manage transactions based on their timestamp. 
+The heap (min-heap) ensures that the oldest transaction can be retrieved in O(log n) time, which directly aligns with the requirement to spend the oldest points first. 
+This approach ensures both performance and correctness when handling multiple transactions. Additionally, I used defaultdict to manage payer balances. 
+This data structure automatically initializes missing keys with a default value (in this case, 0), reducing the need for explicit checks and improving code readability. 
+The combination of these tools provides a clean, efficient solution that handles the problem's constraints effectively.
+
+2. What are the advantages and disadvantages of your solution?
+
+The solution has several advantages that make it both efficient and easy to maintain. From a time complexity perspective, it is highly optimized. 
+Adding transactions is done in O(1) time, checking the balance is O(1), and spending points is O(n log n) in the worst case, where n is the number of transactions. 
+However, the spend operation can be faster on average, depending on how many transactions need to be popped from the heap before reaching the desired amount. 
+This ensures that the solution performs well even as the number of transactions increases. In addition to performance, the code is highly readable, 
+with clean variable names and a well-structured design. The logic for handling points is encapsulated in the User class, which separates it from the API logic. 
+This separation follows best practices, making the solution scalable. More attributes or methods can easily be added to the User class, 
+or even divided into separate User and Point classes based on the single responsibility principle if needed.
+
+However, the solution does come with some trade-offs. The use of a heap and maintaining a total points tracker increases space complexity. 
+This is a deliberate trade-off to achieve faster time complexities, specifically to avoid recalculating the sum of all points in O(n) time during the spend function. 
+Additionally, maintaining a dictionary to track the points per payer also takes up space in trade off of making checking the balance O(1) vs having to create the 
+dictionary every time the check balance function is called. Also, while the solution handles most scenarios well, 
+it may not address all edge cases due to slight ambiguities in the problem statement. These edge cases could require additional refinements depending on the full scope of the requirements. 
+Overall, the solution is efficient but would benefit from further testing and enhancements to handle all potential edge cases.
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+
+One of my favorite projects thus far has been VoiceCoach, a mobile application I developed as part of the Vertically Integrated Projects Program. 
+Leading a team of 10, we built this app for a client to help patients with aphasia improve their speaking skills, 
+and seeing the tangible impact we made on the patients was incredibly rewarding. The application had over 20 users and provided real value to those undergoing speech therapy. 
+I was responsible for implementing custom audio processing in C++, which I integrated into our React Native app using Swift, Java, and TypeScript. 
+This aspect was particularly challenging due to the complexity of handling audio processing and ensuring smooth integration across multiple platforms. 
+Additionally, I set up the backend, establishing a custom authentication system using AWS DynamoDB, S3, and Cognito to handle both patient and clinician accounts securely. 
+The most rewarding part of this project was witnessing how our work positively impacted the patients' speech therapy journeys.
